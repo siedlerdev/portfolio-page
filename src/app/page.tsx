@@ -420,6 +420,18 @@ function ProjectGrid({
           className="project-card group flex min-h-[390px] flex-col justify-between rounded-[8px] border border-[var(--line)] bg-[var(--panel)] p-5 transition hover:-translate-y-1 hover:border-[var(--accent-cyan)]"
         >
           <div>
+            {project.previewImage ? (
+              <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[6px] border border-[var(--line)] bg-[var(--soft)]">
+                <Image
+                  src={project.previewImage.src}
+                  alt={project.previewImage.alt}
+                  fill
+                  sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 44px), 390px"
+                  className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,transparent_54%,rgba(0,0,0,0.3)_100%)]" />
+              </div>
+            ) : null}
             <div className="mb-8 flex items-start justify-between gap-4">
               <p className="font-mono text-sm text-[var(--accent-green)]">
                 {String(index + 1).padStart(2, "0")}
@@ -455,6 +467,24 @@ function ProjectGrid({
               </span>
             ))}
           </div>
+
+          {project.links?.length ? (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.links.map((link) =>
+                link.href ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-10 items-center rounded-[5px] border border-[var(--line-strong)] bg-[var(--soft)] px-3 text-sm font-semibold text-[var(--ink)] transition hover:border-[var(--accent-cyan)] hover:text-[var(--accent-cyan)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                  >
+                    {link.label}
+                  </a>
+                ) : null,
+              )}
+            </div>
+          ) : null}
         </article>
       ))}
     </section>

@@ -23,6 +23,11 @@ export type Project = {
   status?: string;
   summary: string;
   stack: string[];
+  links?: ExternalLink[];
+  previewImage?: {
+    src: string;
+    alt: string;
+  };
 };
 
 export type Experience = {
@@ -155,12 +160,26 @@ export const clientProjects: Project[] = [
 
 export const privateProjects: Project[] = [
   {
-    name: "Private project placeholder 01",
-    context: "Editable project slot",
-    status: "Draft placeholder",
+    name: "storybook-page-builder",
+    context: "Visual page-building toolkit for Storybook",
+    status: "Open-source npm package",
     summary:
-      "Replace this with a current personal project, the problem it solves, and the stage it is in.",
-    stack: ["Add stack", "Add link", "Add status"],
+      "An embeddable Storybook addon for composing pages visually, previewing runtime output, and publishing reusable page-building workflows.",
+    stack: ["React", "TypeScript", "Storybook", "npm", "Vercel"],
+    links: [
+      {
+        label: "npm",
+        href: "https://www.npmjs.com/package/storybook-page-builder",
+      },
+      {
+        label: "Demo",
+        href: "https://storybook-page-builder.vercel.app/?path=/story/storybook-page-builder--runtime&tab=storybook-page-builder/tab",
+      },
+    ],
+    previewImage: {
+      src: "/project-previews/storybook-page-builder.png",
+      alt: "Screenshot of the storybook-page-builder demo interface",
+    },
   },
   {
     name: "Private project placeholder 02",
