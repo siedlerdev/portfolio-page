@@ -208,15 +208,29 @@ export default function Home() {
                 key={group.title}
                 className="skill-card rounded-[8px] border border-[var(--line)] bg-[var(--panel)] p-5"
               >
-                <h3 className="text-lg font-semibold text-[var(--ink)]">
-                  {group.title}
-                </h3>
+                <div className="flex items-center gap-4">
+                  <span className="skill-icon grid size-12 shrink-0 place-items-center rounded-[8px] border border-[var(--line)] bg-[var(--soft)] text-[var(--accent-cyan)]">
+                    <SkillGroupIcon name={group.icon} />
+                  </span>
+                  <div>
+                    <p className="font-mono text-xs text-[var(--muted)]">
+                      stack module
+                    </p>
+                    <h3 className="mt-1 text-lg font-semibold text-[var(--ink)]">
+                      {group.title}
+                    </h3>
+                  </div>
+                </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-[5px] border border-[var(--line)] bg-[var(--soft)] px-3 py-1.5 text-sm text-[var(--muted)]"
+                      className="inline-flex items-center gap-2 rounded-[5px] border border-[var(--line)] bg-[var(--soft)] px-3 py-1.5 text-sm text-[var(--muted)]"
                     >
+                      <span
+                        className="size-1.5 rounded-full bg-[var(--accent-green)]"
+                        aria-hidden="true"
+                      />
                       {skill}
                     </span>
                   ))}
@@ -298,6 +312,65 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function SkillGroupIcon({
+  name,
+}: {
+  name: "code" | "mobile" | "ai" | "delivery";
+}) {
+  const commonProps = {
+    "aria-hidden": true,
+    className: "size-6",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 1.8,
+    viewBox: "0 0 24 24",
+  };
+
+  if (name === "code") {
+    return (
+      <svg {...commonProps}>
+        <path d="m8 9-3 3 3 3" />
+        <path d="m16 9 3 3-3 3" />
+        <path d="m13 6-2 12" />
+      </svg>
+    );
+  }
+
+  if (name === "mobile") {
+    return (
+      <svg {...commonProps}>
+        <rect x="7" y="2.8" width="10" height="18.4" rx="2.4" />
+        <path d="M10.5 6h3" />
+        <path d="M11.5 18h1" />
+      </svg>
+    );
+  }
+
+  if (name === "ai") {
+    return (
+      <svg {...commonProps}>
+        <path d="M12 3v3" />
+        <path d="M12 18v3" />
+        <path d="M3 12h3" />
+        <path d="M18 12h3" />
+        <rect x="7" y="7" width="10" height="10" rx="2" />
+        <path d="M10 10h4" />
+        <path d="M10 14h2.5" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...commonProps}>
+      <path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z" />
+      <path d="M4 12.5 12 17l8-4.5" />
+      <path d="M4 17.5 12 22l8-4.5" />
+    </svg>
   );
 }
 

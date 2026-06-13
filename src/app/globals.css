@@ -113,6 +113,7 @@ body {
 .metric-card,
 .terminal-card,
 .skill-card,
+.skill-icon,
 .timeline-item,
 .project-card {
   box-shadow:
@@ -125,6 +126,12 @@ body {
 .skill-card,
 .timeline-item {
   backdrop-filter: blur(18px);
+}
+
+.skill-icon {
+  background:
+    linear-gradient(135deg, rgba(56, 217, 255, 0.16), transparent 58%),
+    rgba(13, 28, 26, 0.9);
 }
 
 .hero-frame {

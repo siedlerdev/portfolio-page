@@ -34,6 +34,7 @@ export type Experience = {
 
 export type SkillGroup = {
   title: string;
+  icon: "code" | "mobile" | "ai" | "delivery";
   skills: string[];
 };
 
@@ -182,6 +183,7 @@ export const privateProjects: Project[] = [
 export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend",
+    icon: "code",
     skills: [
       "React",
       "Next.js",
@@ -194,6 +196,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Mobile",
+    icon: "mobile",
     skills: [
       "Expo",
       "React Native",
@@ -205,6 +208,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "AI and Backend",
+    icon: "ai",
     skills: [
       "OpenAI API",
       "Codex",
@@ -218,6 +222,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Delivery",
+    icon: "delivery",
     skills: [
       "Software architecture",
       "REST APIs",
